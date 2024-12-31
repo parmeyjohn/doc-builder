@@ -1,14 +1,9 @@
 import Image from "next/image";
 import DocumentLink from "./document-link";
+import { Document } from "../types/document"
 
-type Document = {
-  thumbnailURL: string;
-  title: string;
-  subtitle: string;
-};
-
-export default function Library({}) {
-  const listItems = [
+export default function Library({ }) {
+  const listItems: Document[] = [
     {
       title: "placeholder",
       date: "1/1/1111",
@@ -57,9 +52,9 @@ export default function Library({}) {
   ];
 
   return (
-    <div className="w-full h-full flex flex-wrap gap-16 p-8 grid-cols-4">
-      {listItems.map((item, index) => (
-        <DocumentLink key={index} obj={item}></DocumentLink>
+    <div className="w-full h-full flex flex-wrap gap-8 p-8">
+      {listItems.map((item: Document, index: number) => (
+        <DocumentLink key={index} doc={item}></DocumentLink>
       ))}
     </div>
   );
